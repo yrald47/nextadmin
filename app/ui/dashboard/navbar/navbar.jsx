@@ -9,12 +9,12 @@ const Navbar = () => {
     return (
         <nav className={styles.container}>
             {/* <div className={styles.title}>{headerText || pathname.replaceAll("/", " > ")}</div> */}
-            <div className={styles.iconContainer}>
-                <Image className={styles.icon} src="/company_logo/OJK_Logo.png" alt="" fill />
-            </div>
             {/* <div className={styles.title}>
                 OTORITAS JASA KEUANGAN
             </div> */}
+            <div className={styles.logoContainer}>
+                <Image className={styles.logo} src="/company_logo/OJK_Logo.png" alt="" fill />
+            </div>
             <div className={styles.menu}>
                 <div className={styles.search}>
                     <MdSearch color='#2e374a' />

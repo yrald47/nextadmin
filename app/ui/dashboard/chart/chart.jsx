@@ -11,8 +11,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styles from "./chart.module.css";
+import { countInstanceNegativeCentiment } from "@/app/lib/datas/news";
 
-export const TinyBarChart = ({ opt, title, dataKey, datas }) => {
+export const TinyBarChart = ({ opt, title, dataKey, datas, label }) => {
   const options = [
     { value: "all", text: "All" },
   ];
@@ -30,7 +31,14 @@ export const TinyBarChart = ({ opt, title, dataKey, datas }) => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
-        <select value={selected} onChange={(e) => { handleChange(e.target.value); }} className={styles.dropdown} name="period" id=""
+        <select
+          value={selected}
+          onChange={(e) => {
+            handleChange(e.target.value);
+          }}
+          className={styles.dropdown}
+          name="period"
+          id=""
         >
           {opt.map((option) => (
             <option key={option.value} value={option.value}>
@@ -39,7 +47,6 @@ export const TinyBarChart = ({ opt, title, dataKey, datas }) => {
           ))}
         </select>
       </div>
-      {/* <BarChartContent data={data} dataKey={dataKey} /> */}
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}
@@ -48,8 +55,11 @@ export const TinyBarChart = ({ opt, title, dataKey, datas }) => {
           margin={{ top: 5, right: 30, left: 20, bottom: 50 }}
         >
           <Bar barSize={20} dataKey="count" fill="#1976D2" />
-          <XAxis dataKey={dataKey} />
-          <YAxis dataKey="count" />
+          <XAxis
+            dataKey={dataKey}
+            label={{ value: "X", position: "right" }}
+          />
+          <YAxis dataKey="count" label={{value: "Y", position: "top"}} />
           <Tooltip cursor={{ fill: "transparent" }} />
           <Legend verticalAlign="top" />
         </BarChart>
